@@ -1,7 +1,7 @@
-package template
+package com.adammcneilly.xrplayground
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class TemplateApp : Application()
+class XRPlaygroundApp : Application()
