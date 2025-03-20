@@ -23,6 +23,10 @@
             android:exported="true"
             android:theme="@style/Theme.AppTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
+            <property
+                android:name="android.window.PROPERTY_XR_ACTIVITY_START_MODE"
+                android:value="XR_ACTIVITY_START_MODE_FULL_SPACE_MANAGED" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
