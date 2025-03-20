@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.xr.runtime.Session
 import androidx.xr.runtime.SessionCreatePermissionsNotGranted
 import androidx.xr.runtime.SessionCreateSuccess
+import androidx.xr.runtime.SessionResumePermissionsNotGranted
+import androidx.xr.runtime.SessionResumeSuccess
 import com.adammcneilly.xrplayground.theme.XRTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,6 +45,35 @@ class MainActivity : ComponentActivity() {
                 ) {
                     Greeting("Android")
                 }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        resumeSession()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        session?.pause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        session?.destroy()
+    }
+
+    private fun resumeSession() {
+        when (val resumeResult = session?.resume()) {
+            is SessionResumeSuccess -> {
+                // Successfully resumed
+            }
+            is SessionResumePermissionsNotGranted -> {
+                permissionRequestLauncher.launch(resumeResult.permissions.toTypedArray())
+            }
+            else -> {
+                // Session was null
             }
         }
     }
