@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- NOTE: These do not auto complete. Is that a feature request for XR? -->
+    <uses-permission android:name="android.permission.SCENE_UNDERSTANDING" />
+    <uses-permission android:name="android.permission.HAND_TRACKING" />
 
     <uses-sdk tools:overrideLibrary="androidx.xr.scenecore, androidx.xr.compose, androidx.xr.compose.material3"/>
 
